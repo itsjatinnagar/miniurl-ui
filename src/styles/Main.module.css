@@ -1,0 +1,21 @@
+.main {
+  margin-top: 8rem;
+}
+
+.main_head {
+  text-align: center;
+}
+
+.title {
+  font-size: 3.4rem;
+}
+
+.title span {
+  color: var(--primary-background);
+}
+
+.description {
+  margin-inline: auto;
+  width: 90%;
+  color: var(--primary-text);
+}

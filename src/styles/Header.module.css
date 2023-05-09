@@ -1,0 +1,36 @@
+.header {
+  min-height: 600px;
+  height: calc(94vh - 10rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: var(--primary-background);
+  border-radius: var(--border-xl);
+}
+
+.wrapper {
+  max-width: 86rem;
+  width: 80%;
+  text-align: center;
+  color: var(--accent-background);
+}
+
+.title {
+  font-size: 8.2rem;
+  line-height: 1.34;
+  color: var(--accent-background);
+}
+
+.description {
+  font-size: 2.6rem;
+}
+
+.spacer {
+  margin-top: 2.6rem;
+}
+
+.card {
+  background-color: var(--theme-background);
+  border-radius: var(--border-md);
+}

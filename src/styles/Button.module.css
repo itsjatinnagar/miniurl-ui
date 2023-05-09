@@ -1,0 +1,75 @@
+.btn_primary_light {
+  background-color: var(--accent-background);
+}
+.btn_primary_light:hover {
+  background-color: var(--accent-hover);
+}
+.label_primary_light {
+  color: var(--accent-text);
+}
+
+.btn_secondary_light {
+  border: 4px solid var(--accent-background);
+}
+.label_secondary_light {
+  color: var(--accent-background);
+}
+.btn_secondary_light:hover {
+  background-color: var(--accent-background);
+}
+.btn_secondary_light:hover .label_secondary_light {
+  color: var(--accent-text);
+}
+
+.btn_secondary_dark {
+  border: 4px solid var(--accent-text);
+}
+.label_secondary_dark {
+  color: var(--accent-text);
+}
+.btn_secondary_dark:hover {
+  background-color: var(--accent-text);
+}
+.btn_secondary_dark:hover .label_secondary_dark {
+  color: var(--accent-background);
+}
+
+.btn_logout_light {
+  background-color: var(--error-background);
+}
+.label_logout_light {
+  color: var(--error-text);
+}
+.btn_logout_light:hover .label_logout_light {
+  text-decoration: underline;
+}
+
+.btn_sm {
+  height: 4rem;
+  padding-inline: calc(var(--border-sm) * 1.4);
+  border-radius: var(--border-sm);
+}
+.label_sm {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.btn_md {
+  height: 5rem;
+  padding-inline: calc(var(--border-sm) * 1.8);
+  border-radius: var(--border-sm);
+}
+.label_md {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.btn_lg {
+  height: 6rem;
+  padding-inline: calc(var(--border-md) * 1.4);
+  border-radius: var(--border-md);
+}
+.label_lg {
+  font-size: 2rem;
+  font-weight: 600;
+}
