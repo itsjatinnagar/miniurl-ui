@@ -48,6 +48,7 @@
 }
 
 .long_link {
+  min-height: 7.5rem;
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;

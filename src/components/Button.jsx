@@ -26,7 +26,7 @@ export default function Button({
       disabled={loading}
       onClick={clickHandler}
     >
-      {loading ? (
+      {false ? (
         <span className={styled.loader}></span>
       ) : (
         <span className={`${labelThemeClassName} ${labelSizeClassName}`}>
