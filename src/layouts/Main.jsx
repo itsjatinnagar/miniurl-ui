@@ -2,6 +2,7 @@ import FeatureList from "./FeatureList";
 import styled from "../styles/Components.module.css";
 import styles from "../styles/Main.module.css";
 import LinkList from "./LinkList";
+import { useSelector } from "react-redux";
 
 export default function Main() {
   return (
@@ -13,11 +14,13 @@ export default function Main() {
 }
 
 function MainHead() {
+  const user = useSelector((state) => state.user.user);
+
   return (
     <div className={styles.main_head}>
-      {true ? (
+      {user ? (
         <h2 className={styles.title}>
-          Hello, <i>itsjatinnagar</i>
+          Hello, <i>{user.email.split("@")[0]}</i>
         </h2>
       ) : (
         <>
@@ -41,5 +44,7 @@ function MainHead() {
 }
 
 function MainBody() {
-  return <>{true ? <LinkList /> : <FeatureList />}</>;
+  const user = useSelector((state) => state.user.user);
+
+  return <>{user ? <LinkList /> : <FeatureList />}</>;
 }

@@ -20,7 +20,7 @@ export default function Input({
       maxLength={maxLength}
       minLength={minLength}
       name={name}
-      onChange={changeHandler}
+      onChange={(e) => changeHandler(e.target.value)}
       placeholder={placeholder}
       type={type}
       value={value}

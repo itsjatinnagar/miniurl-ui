@@ -3,13 +3,25 @@ import { PrimaryCard } from "../components/Card";
 import { formatDate } from "../utils/datetime";
 import styles from "../styles/LinkList.module.css";
 import Button from "../components/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { fetchLinks } from "../services/reducers/shortenSlice";
 
 export default function LinkList() {
-  if (true) return;
+  const dispatch = useDispatch();
+  const { links, loading } = useSelector((state) => state.shorten);
+
+  useEffect(() => {
+    dispatch(fetchLinks());
+  }, [dispatch]);
+
+  if (loading || links.length === 0) return;
 
   return (
     <div className={styles.list}>
-      <LinkCard />
+      {links.map((data) => (
+        <LinkCard data={data} />
+      ))}
     </div>
   );
 }

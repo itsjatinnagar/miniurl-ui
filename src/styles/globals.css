@@ -17,6 +17,7 @@
   --theme-text: hsl(0, 0%, 0%);
   --border-color: hsl(0, 0%, 84%);
   --form-background: hsla(0, 0%, 0%, 0.028);
+  --disabled-color: hsl(0, 0%, 60%);
 
   --border-sm: 1.2rem;
   --border-md: 2rem;
@@ -58,7 +59,12 @@ button {
 }
 
 button:disabled {
+  background-color: var(--disabled-color);
   cursor: not-allowed;
+}
+
+button:disabled:hover {
+  background-color: var(--disabled-color);
 }
 
 html {
