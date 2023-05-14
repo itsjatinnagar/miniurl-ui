@@ -21,8 +21,8 @@ export const fetchLinks = createAsyncThunk(
 
 export const createShorten = createAsyncThunk(
   "shorten/create",
-  async (code, { fulfillWithValue, rejectWithValue }) => {
-    const response = await request("/shorten", "POST", { code });
+  async (link, { fulfillWithValue, rejectWithValue }) => {
+    const response = await request("/shorten", "POST", { link });
 
     const data = await response.json();
 
