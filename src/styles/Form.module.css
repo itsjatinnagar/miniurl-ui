@@ -2,3 +2,9 @@
   display: flex;
   gap: 1rem;
 }
+
+@media screen and (max-width: 600px) {
+  .form {
+    flex-direction: column;
+  }
+}

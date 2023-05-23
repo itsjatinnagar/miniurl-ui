@@ -18,3 +18,21 @@
   font-size: 5rem;
   color: var(--accent-text);
 }
+
+@media screen and (max-width: 800px) {
+  .title {
+    font-size: 4.2rem;
+  }
+}
+
+@media screen and (max-width: 676px) {
+  .title {
+    font-size: 3.8rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .title {
+    font-size: 3.4rem;
+  }
+}

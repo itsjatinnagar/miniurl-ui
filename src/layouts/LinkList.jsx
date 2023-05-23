@@ -4,7 +4,7 @@ import { formatDate } from "../utils/datetime";
 import styles from "../styles/LinkList.module.css";
 import Button from "../components/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchLinks } from "../services/reducers/shortenSlice";
 
 export default function LinkList() {
@@ -20,13 +20,30 @@ export default function LinkList() {
   return (
     <div className={styles.list}>
       {links.map((data) => (
-        <LinkCard data={data} />
+        <LinkCard data={data} key={data.id} />
       ))}
     </div>
   );
 }
 
 function LinkCard({ data }) {
+  const [copied, setCopied] = useState(false);
+
+  const copyToClipboard = () => {
+    const text = window.location.href + data.hash;
+    navigator.clipboard.writeText(text).then(
+      () => {
+        setCopied(true);
+        setTimeout(() => {
+          setCopied(false);
+        }, 2000);
+      },
+      () => {
+        setCopied(false);
+      }
+    );
+  };
+
   return (
     <PrimaryCard className={styles.card}>
       <div className={styles.header}>
@@ -64,8 +81,13 @@ function LinkCard({ data }) {
         </a>
 
         <div className={styles.actions}>
-          <Button size="small" theme="primary-light" type="button">
-            Copy MiniUrl
+          <Button
+            size="small"
+            theme="primary-light"
+            type="button"
+            clickHandler={copyToClipboard}
+          >
+            {copied ? "Copied" : "Copy MiniUrl"}
           </Button>
         </div>
       </div>

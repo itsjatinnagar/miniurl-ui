@@ -46,7 +46,7 @@ function ShortenForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createShorten(value));
+    dispatch(createShorten(value)).then((_) => setValue(""));
   };
 
   return (

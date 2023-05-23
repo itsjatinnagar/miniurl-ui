@@ -1,8 +1,15 @@
 .list {
   margin-top: 6rem;
   display: grid;
-  grid-template-columns: repeat(3, minmax(30rem, 1fr));
+  justify-content: center;
+  grid-template-columns: repeat(3, minmax(29rem, 1fr));
   gap: 2rem;
+}
+
+@media screen and (max-width: 950px) {
+  .list {
+    grid-template-columns: minmax(30rem, 50rem);
+  }
 }
 
 .card {

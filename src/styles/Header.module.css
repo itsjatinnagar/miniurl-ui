@@ -34,3 +34,39 @@
   background-color: var(--theme-background);
   border-radius: var(--border-md);
 }
+
+@media screen and (max-width: 787px) {
+  .title {
+    font-size: 7.2rem;
+  }
+  .description {
+    font-size: 2.3rem;
+  }
+}
+
+@media screen and (max-width: 696px) {
+  .title {
+    font-size: 6.3rem;
+  }
+  .description {
+    font-size: 2rem;
+  }
+}
+
+@media screen and (max-width: 610px) {
+  .title {
+    font-size: 5.6rem;
+  }
+  .description {
+    font-size: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .title {
+    font-size: 5rem;
+  }
+  .description {
+    font-size: 1.6rem;
+  }
+}
