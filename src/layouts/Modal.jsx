@@ -1,4 +1,3 @@
-import Button from "../components/Button";
 import styled from "../styles/Components.module.css";
 import styles from "../styles/Modal.module.css";
 import close from "../images/icon-close.svg";
@@ -17,9 +16,12 @@ export default function Modal() {
     <div className={styled.overlay}>
       <div className={styles.modal}>
         <div className={styles.actions}>
-          <Button clickHandler={() => dispatch(closeModal())}>
+          <button
+            className={styles.action_button}
+            onClick={() => dispatch(closeModal())}
+          >
             <img src={close} alt="miniurl" />
-          </Button>
+          </button>
         </div>
 
         {modalView === ModalViewEnum.LOGIN && <LoginSection />}

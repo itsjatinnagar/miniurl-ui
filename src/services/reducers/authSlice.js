@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import request from "../../utils/request";
+import { toast } from "react-toastify";
 
 const initialState = {
   loading: false,
@@ -44,9 +45,11 @@ export const authSlice = createSlice({
       .addCase(sendCode.fulfilled, (state, action) => {
         state.loading = false;
         state.email = action.payload.email;
+        toast.success("Code Sent Successfully");
       })
       .addCase(sendCode.rejected, (state, action) => {
         state.loading = false;
+        toast.error("Something Went Wrong");
       })
       .addCase(verifyCode.pending, (state) => {
         state.loading = true;
@@ -57,6 +60,11 @@ export const authSlice = createSlice({
       })
       .addCase(verifyCode.rejected, (state, action) => {
         state.loading = false;
+        if (action.payload.message === "incorrect code") {
+          toast.error("Incorrect Code");
+        } else {
+          toast.error("Something Went Wrong");
+        }
       });
   },
 });

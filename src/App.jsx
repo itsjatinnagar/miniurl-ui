@@ -8,6 +8,8 @@ import Modal from "./layouts/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchUser } from "./services/reducers/userSlice";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function App() {
   const dispatch = useDispatch();
@@ -27,6 +29,8 @@ export default function App() {
       <Main />
       <Pricing />
       <Footer />
+
+      <ToastContainer />
 
       {modalOpen && createPortal(<Modal />, document.body)}
     </>

@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import request from "../../utils/request";
+import { toast } from "react-toastify";
 
 const initialState = {
   user: null,
@@ -33,6 +34,12 @@ export const userSlice = createSlice({
       })
       .addCase(fetchUser.rejected, (state, action) => {
         state.loading = false;
+        if (
+          action.payload !== undefined &&
+          action.payload.message !== "unauthorized"
+        ) {
+          toast.error("Something Went Wrong");
+        }
       });
   },
 });

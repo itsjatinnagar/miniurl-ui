@@ -2,7 +2,7 @@
   margin-top: 6rem;
   display: grid;
   justify-content: space-evenly;
-  grid-template-columns: repeat(auto-fill, minmax(27rem, 30rem));
+  grid-template-columns: repeat(auto-fill, minmax(1rem, 35rem));
   gap: 2rem;
 }
 
@@ -35,16 +35,11 @@
 .inline_row {
   display: inline-flex;
   column-gap: 2px;
-  align-items: center;
 }
 
 .info {
   font-size: 1.4rem;
   color: var(--gray-text);
-}
-
-.graph_icon {
-  height: min-content;
 }
 
 .long_link {

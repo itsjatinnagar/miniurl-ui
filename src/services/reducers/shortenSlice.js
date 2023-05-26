@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import request from "../../utils/request";
+import { toast } from "react-toastify";
 
 const initialState = {
   links: [],
@@ -46,6 +47,7 @@ export const shortenSlice = createSlice({
       })
       .addCase(fetchLinks.rejected, (state, action) => {
         state.loading = false;
+        toast.error("Something Went Wrong");
       })
       .addCase(createShorten.pending, (state) => {
         state.loading = true;
@@ -53,9 +55,11 @@ export const shortenSlice = createSlice({
       .addCase(createShorten.fulfilled, (state, action) => {
         state.loading = false;
         state.links.unshift(action.payload["data"]);
+        toast.success("MiniUrl Created Successfully");
       })
       .addCase(createShorten.rejected, (state, action) => {
         state.loading = false;
+        toast.error("Something Went Wrong");
       });
   },
 });

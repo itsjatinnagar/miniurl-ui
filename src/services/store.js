@@ -6,9 +6,9 @@ import shortenReducer from "./reducers/shortenSlice";
 
 export const store = configureStore({
   reducer: {
+    auth: authReducer,
     modal: modalReducer,
     user: userReducer,
-    auth: authReducer,
     shorten: shortenReducer,
   },
 });
