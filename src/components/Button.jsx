@@ -28,10 +28,12 @@ export default function Button({
     >
       {loading ? (
         <span className={styled.loader}></span>
-      ) : (
+      ) : typeof children === "string" ? (
         <span className={`${labelThemeClassName} ${labelSizeClassName}`}>
           {children}
         </span>
+      ) : (
+        children
       )}
     </button>
   );

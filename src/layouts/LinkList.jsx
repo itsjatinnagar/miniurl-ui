@@ -1,4 +1,5 @@
 import { ReactComponent as IconGraph } from "../images/icon-graph.svg";
+import { ReactComponent as IconMore } from "../images/icon-more.svg";
 import { PrimaryCard } from "../components/Card";
 import { formatDate } from "../utils/datetime";
 import styles from "../styles/LinkList.module.css";
@@ -6,8 +7,10 @@ import Button from "../components/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { fetchLinks } from "../services/reducers/shortenSlice";
+import Sidebar from "./Sidebar";
 
 export default function LinkList() {
+  const [activeId, setActiveId] = useState(null);
   const dispatch = useDispatch();
   const { links, loading } = useSelector((state) => state.shorten);
 
@@ -20,13 +23,14 @@ export default function LinkList() {
   return (
     <div className={styles.list}>
       {links.map((data) => (
-        <LinkCard data={data} key={data.id} />
+        <LinkCard data={data} key={data.id} handleClick={setActiveId} />
       ))}
+      {activeId && <Sidebar id={activeId} handleClick={setActiveId} />}
     </div>
   );
 }
 
-function LinkCard({ data }) {
+function LinkCard({ data, handleClick }) {
   const [copied, setCopied] = useState(false);
 
   const copyToClipboard = () => {
@@ -88,6 +92,13 @@ function LinkCard({ data }) {
             clickHandler={copyToClipboard}
           >
             {copied ? "Copied" : "Copy MiniUrl"}
+          </Button>
+          <Button
+            size="small"
+            theme="secondary-light"
+            clickHandler={() => handleClick(data.id)}
+          >
+            <IconMore />
           </Button>
         </div>
       </div>

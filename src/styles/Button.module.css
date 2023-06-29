@@ -11,6 +11,10 @@
 .btn_secondary_light {
   border: 4px solid var(--accent-background);
 }
+.btn_secondary_light svg {
+  fill: var(--accent-background);
+  color: var(--accent-background);
+}
 .label_secondary_light {
   color: var(--accent-background);
 }
@@ -18,6 +22,10 @@
   background-color: var(--accent-background);
 }
 .btn_secondary_light:hover .label_secondary_light {
+  color: var(--accent-text);
+}
+.btn_secondary_light:hover svg {
+  fill: var(--accent-text);
   color: var(--accent-text);
 }
 

@@ -1,0 +1,30 @@
+.sidebar {
+  position: absolute;
+  inset: 1rem;
+  max-width: 50rem;
+  padding: var(--border-md);
+  background-color: var(--theme-background);
+  border-radius: var(--border-xl);
+}
+
+.body {
+  height: 100%;
+  overflow-y: auto;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.action_button {
+  height: 24px;
+  width: 24px;
+}
+
+.chart {
+  max-width: 40rem;
+  height: 100%;
+  width: 100%;
+}

@@ -62,7 +62,14 @@
   text-decoration: none;
 }
 
-.actions,
-.actions > button {
+.actions {
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.actions > button[type="button"] {
+  flex-grow: 1;
 }
