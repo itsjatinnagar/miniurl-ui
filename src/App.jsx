@@ -1,3 +1,9 @@
+import { useAuth } from "./contexts/AuthContext";
+import Dashboard from "./pages/Dashboard";
+import Homepage from "./pages/Homepage";
+
 export default function App() {
-  return <h1>MiniUrl</h1>;
+  const { isAuthenticated } = useAuth();
+
+  return <>{isAuthenticated ? <Dashboard /> : <Homepage />}</>;
 }
