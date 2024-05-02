@@ -1,3 +1,5 @@
+import { formatDate } from "../utilities/formatter";
+
 export default function LinkCard({ data }) {
   return (
     <div className="p-6 flex flex-col bg-white rounded-xl">
@@ -8,7 +10,7 @@ export default function LinkCard({ data }) {
           </h3>
           <div className="flex flex-col flex-1 gap-6">
             <a href="" className="hidden-text">
-              {data["long_link"]}
+              {data["long_url"]}
             </a>
             <div className="flex flex-col flex-wrap gap-6">
               <div className="flex items-center">
@@ -17,7 +19,7 @@ export default function LinkCard({ data }) {
               </div>
               <div className="flex items-center">
                 <img src="/images/calendar.svg" alt="calender" />
-                <span>{data["created_at"]}</span>
+                <span>{formatDate(data["created_at"])}</span>
               </div>
             </div>
           </div>

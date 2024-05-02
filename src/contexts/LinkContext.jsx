@@ -13,10 +13,15 @@ export default function LinkProvider({ children }) {
     try {
       const response = await request("/links");
       const data = await response.json();
+      if (response.status !== 200) {
+        throw new Error(data.message);
+      }
       dispatch({ type: "SET_LINKS", payload: data });
     } catch (error) {
-      console.log("🚀 ~ fetchLinks ~ error:", error);
-      dispatch({ type: "SET_ERROR", payload: "Failed to fetch links" });
+      dispatch({
+        type: "SET_ERROR",
+        payload: { type: "error", message: "Failed to fetch links" },
+      });
     }
   };
 
@@ -25,15 +30,19 @@ export default function LinkProvider({ children }) {
     try {
       const response = await request("/shorten", "POST", { link });
       const data = await response.json();
+      if (response.status !== 200) {
+        throw new Error(data.message);
+      }
       dispatch({ type: "SET_LINKS", payload: data });
     } catch (error) {
-      console.log("🚀 ~ createLink ~ error:", error);
-      dispatch({ type: "SET_ERROR", payload: "Failed to create link" });
+      dispatch({
+        type: "SET_ERROR",
+        payload: { type: "error", message: "Failed to create link" },
+      });
     }
   };
 
   useEffect(() => {
-    console.log("Fetching Links.......");
     fetchLinks();
   }, []);
 

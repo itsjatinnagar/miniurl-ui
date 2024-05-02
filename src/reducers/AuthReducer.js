@@ -1,4 +1,5 @@
 export const initialState = {
+  email: null,
   user: null,
   showVerifyForm: false,
   isAuthenticated: false,
@@ -12,20 +13,20 @@ const reducer = (state, action) => {
 
   switch (type) {
     case "SUBMIT_EMAIL":
-      console.log("🚀 ~ AuthReducer ~ SUBMIT_EMAIL ~ payload:", payload);
       return {
         ...state,
         loading: false,
         showVerifyForm: true,
+        email: payload.email,
       };
     case "VERIFY_CODE":
-      console.log("🚀 ~ AuthReducer ~ VERIFY_CODE ~ payload:", payload);
       return {
         ...state,
         loading: false,
+        isAuthenticated: true,
+        user: payload.data,
       };
     case "SET_USER":
-      console.log("🚀 ~ AuthReducer ~ SET_USER ~ payload:", payload);
       return {
         ...state,
         loading: false,
@@ -35,14 +36,16 @@ const reducer = (state, action) => {
     case "LOGOUT":
       return {
         ...state,
+        loading: false,
         user: null,
         isAuthenticated: false,
       };
     case "SET_LOADING":
       return { ...state, loading: true, error: null };
     case "SET_ERROR":
-      console.log("🚀 ~ AuthReducer ~ SET_ERROR ~ payload:", payload);
-      return { ...state, loading: false };
+      return { ...state, loading: false, error: payload.message };
+    case "SET_TOAST":
+      return { ...state, loading: false, toast: payload };
     default:
       throw new Error("Undefined Action: " + type);
   }

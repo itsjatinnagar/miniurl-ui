@@ -11,12 +11,17 @@ export default function AuthProvider({ children }) {
   const sendEmail = async (email) => {
     dispatch({ type: "SET_LOADING" });
     try {
-      const response = await request("/auth", "POST", { email });
+      const response = await request("/login", "POST", { email });
       const data = await response.json();
+      if (response.status !== 200) {
+        throw new Error(data.message);
+      }
       dispatch({ type: "SUBMIT_EMAIL", payload: data });
     } catch (error) {
-      console.log("🚀 ~ sendEmail ~ error:", error);
-      dispatch({ type: "SET_ERROR", payload: "Failed to send email" });
+      dispatch({
+        type: "SET_ERROR",
+        payload: { type: "error", message: "Failed to send email" },
+      });
     }
   };
 
@@ -25,10 +30,18 @@ export default function AuthProvider({ children }) {
     try {
       const response = await request("/verify", "POST", { code });
       const data = await response.json();
-      dispatch({ type: "VERIFY_CODE", payload: data });
+      if (response.status === 200) {
+        dispatch({ type: "VERIFY_CODE", payload: data });
+      } else if (response.status === 400) {
+        dispatch({ type: "SET_ERROR", payload: data });
+      } else {
+        throw new Error(data);
+      }
     } catch (error) {
-      console.log("🚀 ~ verifyCode ~ error:", error);
-      dispatch({ type: "SET_ERROR", payload: "Failed to verify code" });
+      dispatch({
+        type: "SET_TOAST",
+        payload: { type: "error", message: "Failed to verify code" },
+      });
     }
   };
 
@@ -37,9 +50,11 @@ export default function AuthProvider({ children }) {
     try {
       const response = await request("/user");
       const data = await response.json();
+      if (response.status !== 200) {
+        throw new Error(data.message);
+      }
       dispatch({ type: "SET_USER", payload: data });
     } catch (error) {
-      console.log("🚀 ~ fetchUser ~ error:", error);
       dispatch({ type: "SET_ERROR", payload: "Failed to fetch user" });
     }
   };
@@ -51,13 +66,11 @@ export default function AuthProvider({ children }) {
       const data = await response.json();
       dispatch({ type: "LOGOUT", payload: data });
     } catch (error) {
-      console.log("🚀 ~ logout ~ error:", error);
       dispatch({ type: "SET_ERROR", payload: "Failed to logout user" });
     }
   };
 
   useEffect(() => {
-    console.log("Fetching User.......");
     fetchUser();
   }, []);
 

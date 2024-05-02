@@ -6,7 +6,7 @@ export default function Dashboard() {
   return (
     <>
       <Header />
-      <main className="px-4 my-5">
+      <main className="main flex flex-col px-4 py-5">
         <ShortenForm />
         <hr className="my-5 border border-solid border-primary-900" />
         <LinksList />
