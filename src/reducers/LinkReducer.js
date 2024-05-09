@@ -12,13 +12,28 @@ const reducer = (state, action) => {
     case "SET_LINKS":
       return {
         ...state,
+        links: [...payload.data, ...state.links],
         loading: false,
-        links: [...state.links, ...payload.data],
+        error: null,
       };
     case "SET_LOADING":
-      return { ...state, loading: true, error: null };
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
     case "SET_ERROR":
-      return { ...state, loading: false };
+      return {
+        ...state,
+        loading: false,
+        error: payload,
+      };
+    case "SET_TOAST":
+      return {
+        ...state,
+        loading: false,
+        toast: payload,
+      };
     default:
       throw new Error("Undefined Action: " + type);
   }

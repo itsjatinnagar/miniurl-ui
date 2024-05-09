@@ -6,9 +6,10 @@ export default function Dashboard() {
   return (
     <>
       <Header />
-      <main className="main flex flex-col px-4 py-5">
+      <main className="main container mx-auto px-6 flex-col items-start gap-y-5">
+        <h2 className="text-3xl font-bold">Links</h2>
         <ShortenForm />
-        <hr className="my-5 border border-solid border-primary-900" />
+        <hr className="w-full border border-solid border-primary-900" />
         <LinksList />
       </main>
     </>

@@ -1,4 +1,4 @@
-export default function request(endpoint, method = "GET", data = null) {
+const request = (endpoint, method = "GET", data = null) => {
   return fetch(`http://127.0.0.1:5000${endpoint}`, {
     body: data && JSON.stringify(data),
     credentials: "include",
@@ -7,11 +7,11 @@ export default function request(endpoint, method = "GET", data = null) {
     },
     method: method,
   });
-}
+};
 
 // Production
-// export default function request(endpoint, method = "GET", data = null) {
-//   return fetch(endpoint, {
+// const request = (endpoint, method = "GET", data = null) => {
+//   return fetch(`http://127.0.0.1:5000${endpoint}`, {
 //     body: data && JSON.stringify(data),
 //     credentials: "same-origin",
 //     headers: {
@@ -20,4 +20,6 @@ export default function request(endpoint, method = "GET", data = null) {
 //     method: method,
 //     mode: "same-origin",
 //   });
-// }
+// };
+
+export default request;

@@ -1,60 +1,28 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import linkReducer, { initialState } from "../reducers/LinkReducer";
-import request from "../utilities/request";
 import Toast from "../components/Toast";
+import { createLink, fetchLinks } from "../services/linkService";
 
 const LinkContext = createContext(null);
 
 export default function LinkProvider({ children }) {
   const [state, dispatch] = useReducer(linkReducer, initialState);
 
-  const fetchLinks = async () => {
-    dispatch({ type: "SET_LOADING" });
-    try {
-      const response = await request("/links");
-      const data = await response.json();
-      if (response.status !== 200) {
-        throw new Error(data.message);
-      }
-      dispatch({ type: "SET_LINKS", payload: data });
-    } catch (error) {
-      dispatch({
-        type: "SET_ERROR",
-        payload: { type: "error", message: "Failed to fetch links" },
-      });
-    }
-  };
-
-  const createLink = async (link) => {
-    dispatch({ type: "SET_LOADING" });
-    try {
-      const response = await request("/shorten", "POST", { link });
-      const data = await response.json();
-      if (response.status !== 200) {
-        throw new Error(data.message);
-      }
-      dispatch({ type: "SET_LINKS", payload: data });
-    } catch (error) {
-      dispatch({
-        type: "SET_ERROR",
-        payload: { type: "error", message: "Failed to create link" },
-      });
-    }
-  };
-
   useEffect(() => {
-    fetchLinks();
+    fetchLinks(dispatch);
   }, []);
 
   return (
-    <LinkContext.Provider value={{ ...state, createLink, fetchLinks }}>
+    <LinkContext.Provider
+      value={{
+        ...state,
+        createLink: createLink.bind(null, dispatch),
+        fetchLinks: fetchLinks.bind(null, dispatch),
+      }}
+    >
       {children}
       {state.toast && (
-        <Toast
-          title={state.toast.title}
-          subtitle={state.toast.subtitle}
-          type={state.toast.type}
-        />
+        <Toast message={state.toast.message} type={state.toast.type} />
       )}
     </LinkContext.Provider>
   );

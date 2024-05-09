@@ -24,9 +24,9 @@ export default function Profile({ user }) {
   }, []);
 
   return (
-    <div className="relative flex items-center justify-center gap-x-4">
+    <div className="relative">
       <button
-        className="button h-9 w-9 rounded-full"
+        className="h-10 w-10 flex items-center justify-center rounded-full"
         style={{ backgroundColor: color }}
         onClick={() => setOpen((prev) => !prev)}
       >
