@@ -6,11 +6,14 @@ export const fetchLinks = async (dispatch) => {
     dispatch({ type: "SET_LOADING" });
     const response = await request("/links");
     const data = await response.json();
-    if (response.status !== 200) {
+    if (response.status === 200) {
+      dispatch({ type: "SET_LINKS", payload: data });
+    }
+    if (response.status === 500) {
       throw new Error(data.message);
     }
-    dispatch({ type: "SET_LINKS", payload: data });
   } catch (error) {
+    console.log("Fetch Links Catch Statement");
     dispatch({
       type: "SET_TOAST",
       payload: { type: "error", message: error.message },

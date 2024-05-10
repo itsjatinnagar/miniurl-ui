@@ -1,8 +1,16 @@
+import { useEffect } from "react";
 import Header from "../components/Header";
 import LinksList from "../components/LinksList";
 import ShortenForm from "../components/ShortenForm";
+import { useLink } from "../contexts/LinkContext";
 
 export default function Dashboard() {
+  const { fetchLinks } = useLink();
+
+  useEffect(() => {
+    fetchLinks();
+  }, []);
+
   return (
     <>
       <Header />

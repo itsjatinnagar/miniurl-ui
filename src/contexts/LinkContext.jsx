@@ -8,10 +8,6 @@ const LinkContext = createContext(null);
 export default function LinkProvider({ children }) {
   const [state, dispatch] = useReducer(linkReducer, initialState);
 
-  useEffect(() => {
-    fetchLinks(dispatch);
-  }, []);
-
   return (
     <LinkContext.Provider
       value={{
