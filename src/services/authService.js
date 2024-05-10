@@ -86,9 +86,8 @@ export const fetchUser = async (dispatch) => {
     const data = await response.json();
     if (response.status === 200) {
       dispatch({ type: "SET_USER", payload: data.data });
-    } else if (response.status === 401) {
-      return;
-    } else {
+    }
+    if (response.status === 500) {
       throw new Error(data.message);
     }
   } catch (error) {

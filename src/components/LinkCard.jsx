@@ -36,7 +36,7 @@ function ShortLink({ hash }) {
 
   return (
     <h3 className="hidden-text text-xl font-semibold">
-      <a href={href} className="text-primary hover:underline">
+      <a href={href} className="text-primary hover:underline" target="_blank">
         {href}
       </a>
     </h3>
