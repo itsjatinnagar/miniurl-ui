@@ -13,7 +13,6 @@ export const fetchLinks = async (dispatch) => {
       throw new Error(data.message);
     }
   } catch (error) {
-    console.log("Fetch Links Catch Statement");
     dispatch({
       type: "SET_TOAST",
       payload: { type: "error", message: error.message },

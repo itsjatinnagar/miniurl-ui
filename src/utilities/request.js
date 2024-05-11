@@ -11,7 +11,7 @@ const request = (endpoint, method = "GET", data = null) => {
 
 // Production
 // const request = (endpoint, method = "GET", data = null) => {
-//   return fetch(`http://127.0.0.1:5000${endpoint}`, {
+//   return fetch(endpoint, {
 //     body: data && JSON.stringify(data),
 //     credentials: "same-origin",
 //     headers: {
