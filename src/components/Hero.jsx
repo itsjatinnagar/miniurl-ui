@@ -20,10 +20,10 @@ function ContentSection() {
       <h1 className="text-5xl font-bold text-center leading-tight">
         More than just <span className="text-primary">shorter</span> links
       </h1>
-      <h4 className="mx-auto mt-4 max-w-sm text-base text-gray-800 text-center">
+      <p className="mx-auto mt-4 max-w-sm text-base text-gray-800 text-center">
         Build your brand&apos;s recognition and get detailed insights on how
         your links are performing.
-      </h4>
+      </p>
     </section>
   );
 }

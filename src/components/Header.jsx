@@ -8,7 +8,13 @@ export default function Header() {
   return (
     <header className="px-6 bg-white">
       <div className="container mx-auto h-20 flex items-center justify-between">
-        <img src="/images/logo.svg" alt="miniurl logo" className="h-7" />
+        <img
+          src="/images/logo.svg"
+          alt="miniurl logo"
+          className="h-7"
+          height="29px"
+          width="105px"
+        />
 
         {user ? <Profile user={user} /> : <LoginButton />}
       </div>

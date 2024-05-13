@@ -35,9 +35,14 @@ function ShortLink({ hash }) {
   const href = window.location.href + hash;
 
   return (
-    <h3 className="hidden-text text-xl font-semibold">
-      <a href={href} className="text-primary hover:underline" target="_blank">
-        {href}
+    <h3 className="text-xl font-semibold">
+      <a
+        href={href}
+        className="flex text-primary hover:underline"
+        target="_blank"
+      >
+        <span>{window.location.origin}</span>
+        <span>/{hash}</span>
       </a>
     </h3>
   );
@@ -80,7 +85,7 @@ function CopyButton({ hash }) {
       className="h-10 w-36 min-w-fit text-sm text-primary border border-solid border-primary-900 rounded transition-colors hover:bg-primary/5"
       onClick={handleCopy}
     >
-      <img src="/images/copy.svg" alt="copy" className="h-6 w-6" />
+      <img src="/images/copy.svg" alt="copy icon" className="h-6 w-6" />
       <span className="text-base font-medium">
         {isCopied ? "Copied" : "Copy"}
       </span>
@@ -114,7 +119,7 @@ function CodeButton({ hash }) {
       className="h-10 w-36 min-w-fit text-sm text-primary border border-solid border-primary-900 rounded transition-colors hover:bg-primary/5"
       onClick={downloadCode}
     >
-      <img src="/images/download.svg" alt="download" className="h-6 w-6" />
+      <img src="/images/download.svg" alt="download icon" className="h-6 w-6" />
       <span className="text-base font-medium">QR Code</span>
     </button>
   );
