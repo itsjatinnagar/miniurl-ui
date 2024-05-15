@@ -9,7 +9,13 @@ import Loader from "./components/Loader.jsx";
 ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider>
     <React.StrictMode>
-      <Suspense fallback={<Loader className="primary lg" />}>
+      <Suspense
+        fallback={
+          <div className="h-full w-full grid place-items-center">
+            <Loader className="primary lg" />
+          </div>
+        }
+      >
         <App />
       </Suspense>
     </React.StrictMode>
