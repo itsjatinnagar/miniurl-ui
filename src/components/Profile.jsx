@@ -50,7 +50,9 @@ export default function Profile({ user }) {
               </span>
             </div>
             <p className="flex flex-col items-start justify-center gap-y-1">
-              <span className="text-lg">{user.email}</span>
+              <span className="text-lg max-[360px]:text-base">
+                {user.email}
+              </span>
               <span className="text-sm text-gray-700">Member since {year}</span>
             </p>
           </div>

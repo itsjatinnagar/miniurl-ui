@@ -41,7 +41,7 @@ function ShortLink({ hash }) {
         className="flex text-primary hover:underline"
         target="_blank"
       >
-        <span>{window.location.origin}</span>
+        <span className="hidden-text">{window.location.origin}</span>
         <span>/{hash}</span>
       </a>
     </h3>
