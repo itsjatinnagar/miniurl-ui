@@ -25,7 +25,7 @@ export default function Profile({ user }) {
 
 	const handleClick = (e) => {
 		e.stopPropagation();
-		setOpenProfileCard((prev) => !prev);
+		setOpen((prev) => !prev);
 	};
 
 	return (
