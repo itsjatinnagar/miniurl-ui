@@ -1,14 +1,13 @@
-import { lazy } from "react";
+import Dashboard from "./pages/Dashboard";
+import Homepage from "./pages/Homepage";
 import { useAuth } from "./contexts/AuthContext";
-const DashboardComponent = lazy(() => import("./pages/Dashboard"));
-const HomepageComponent = lazy(() => import("./pages/Homepage"));
 
 export default function App() {
-  const { isAuthenticated } = useAuth();
+	const { isAuthenticated } = useAuth();
 
-  if (isAuthenticated) {
-    return <DashboardComponent />;
-  } else {
-    return <HomepageComponent />;
-  }
+	if (isAuthenticated) {
+		return <Dashboard />;
+	} else {
+		return <Homepage />;
+	}
 }

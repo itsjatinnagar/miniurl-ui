@@ -3,148 +3,196 @@
 @tailwind utilities;
 
 * {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
 
 html {
-  font-family: "Poppins", sans-serif;
+	font-family: "Poppins", sans-serif;
 }
 
 a {
-  color: rgb(0, 0, 0);
-  text-decoration: none;
+	color: rgb(0, 0, 0);
+	text-decoration: none;
 }
 
 button,
 input,
 textarea {
-  display: inline-block;
-  background: none;
-  border: none;
-  font: inherit;
-  outline: none;
+	display: inline-block;
+	background: none;
+	border: none;
+	font: inherit;
+	outline: none;
 }
 
 button:disabled,
 input:disabled,
 textarea:disabled {
-  cursor: not-allowed;
+	cursor: not-allowed;
 }
 
 img {
-  display: inline-block;
-  max-height: 100%;
-  max-width: 100%;
-  height: auto;
-  width: auto;
+	display: inline-block;
+	max-height: 100%;
+	max-width: 100%;
+	height: auto;
+	width: auto;
 }
 
 body {
-  height: 100vh;
-  background-color: #f5f5fe;
+	height: 100vh;
+	background-color: #fafaff;
 }
 
 #root {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  row-gap: 24px;
+	height: 100%;
+}
+
+.grid-bg {
+	padding-inline: 20px;
+	position: relative;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	flex: 50%;
+	overflow: hidden;
+}
+
+.grid-bg::before {
+	content: "";
+	position: absolute;
+	z-index: -2;
+	width: 100%;
+	height: 100%;
+	background: radial-gradient(circle, #00000000 0, #fafafa 100%);
+}
+
+.grid-bg::after {
+	content: "";
+	position: absolute;
+	z-index: -3;
+	width: 100%;
+	height: 100%;
+	background-image: url("/images/grid.svg");
+	opacity: 0.475;
+	filter: invert(1);
+}
+
+.gradient {
+	position: absolute;
+	top: 100px;
+	z-index: -1;
+	width: 100%;
+	height: 100%;
+	max-width: 400px;
+	background: radial-gradient(at 27% 37%, #3a8bfd 0, transparent 0),
+		radial-gradient(at 97% 21%, #72fe7d 0px, transparent 50%),
+		radial-gradient(at 52% 99%, #fd3a4e 0px, transparent 50%),
+		radial-gradient(at 10% 29%, #855afc 0px, transparent 50%),
+		radial-gradient(at 97% 96%, #e4c795 0px, transparent 50%),
+		radial-gradient(at 33% 50%, #8ca8e8 0px, transparent 50%),
+		radial-gradient(at 79% 53%, #eea5ba 0px, transparent 50%);
+	opacity: 0.16;
+	filter: blur(100px) saturate(150%);
 }
 
 .main {
-  display: flex;
-  flex-grow: 1;
+	display: flex;
+	flex-grow: 1;
 }
 
 .form-card {
-  box-shadow: 0 0 24px 0 rgba(12, 12, 240, 0.042);
+	box-shadow: 0 0 24px 0 rgba(12, 12, 240, 0.042);
 }
 
 .profile-card {
-  box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.06);
+	box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.06);
 }
 
 .hidden-text {
-  word-break: break-all;
-  display: -webkit-box;
-  -webkit-line-clamp: 1;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
+	word-break: break-all;
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }
 
 .toast {
-  position: fixed;
-  top: 70px;
-  right: 10px;
-  z-index: 99999;
-  max-width: 360px;
-  width: 90%;
-  overflow: hidden;
-  border-top-width: 4px;
-  border-style: solid;
+	position: fixed;
+	top: 70px;
+	right: 10px;
+	z-index: 99999;
+	max-width: 360px;
+	width: 90%;
+	overflow: hidden;
+	border-top-width: 4px;
+	border-style: solid;
 }
 
 .toast-success {
-  @apply border-success;
-  box-shadow: 3px 3px 5px 0 #349b4a1a;
+	@apply border-success;
+	box-shadow: 3px 3px 5px 0 #349b4a1a;
 }
 
 .toast-error {
-  @apply border-error;
-  box-shadow: 3px 3px 5px 0 #d634381a;
+	@apply border-error;
+	box-shadow: 3px 3px 5px 0 #d634381a;
 }
 
 .loader {
-  transform-origin: center;
-  animation: rotate 2s linear infinite;
+	transform-origin: center;
+	animation: rotate 2s linear infinite;
 }
 
 .loader circle {
-  fill: none;
-  stroke-width: 6;
-  stroke-dasharray: 1, 200;
-  stroke-dashoffset: 0;
-  stroke-linecap: round;
-  animation: dash 1500ms ease-in-out infinite;
+	fill: none;
+	stroke-width: 6;
+	stroke-dasharray: 1, 200;
+	stroke-dashoffset: 0;
+	stroke-linecap: round;
+	animation: dash 1500ms ease-in-out infinite;
 }
 
 .loader.sm {
-  width: 28px;
+	width: 28px;
 }
 
 .loader.lg {
-  width: 60px;
+	width: 60px;
 }
 
 .loader.light circle {
-  stroke: #ffffff;
+	stroke: #ffffff;
 }
 
 .loader.primary circle {
-  stroke: #0c0cf0;
+	stroke: #0c0cf0;
 }
 
 @keyframes rotate {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+	from {
+		transform: rotate(0deg);
+	}
+
+	to {
+		transform: rotate(360deg);
+	}
 }
 
 @keyframes dash {
-  0% {
-    stroke-dasharray: 1, 200;
-    stroke-dashoffset: 0;
-  }
-  50% {
-    stroke-dasharray: 90, 200;
-    stroke-dashoffset: -35px;
-  }
-  100% {
-    stroke-dashoffset: -125px;
-  }
+	0% {
+		stroke-dasharray: 1, 200;
+		stroke-dashoffset: 0;
+	}
+
+	50% {
+		stroke-dasharray: 90, 200;
+		stroke-dashoffset: -35px;
+	}
+
+	100% {
+		stroke-dashoffset: -125px;
+	}
 }
