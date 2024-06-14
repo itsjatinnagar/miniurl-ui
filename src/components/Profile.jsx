@@ -23,12 +23,17 @@ export default function Profile({ user }) {
 		};
 	}, []);
 
+	const handleClick = (e) => {
+		e.stopPropagation();
+		setOpenProfileCard((prev) => !prev);
+	};
+
 	return (
 		<div className="relative">
 			<button
 				className="h-10 w-10 flex items-center justify-center rounded-full"
 				style={{ backgroundColor: color }}
-				onClick={() => setOpen((prev) => !prev)}
+				onClick={handleClick}
 			>
 				<span className="text-xl font-medium text-white uppercase">
 					{user.email.at(0)}
